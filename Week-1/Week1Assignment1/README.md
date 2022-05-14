@@ -112,9 +112,9 @@ The rules are then applied in correct cascading order if there is more than one 
 
 ## Layout and Painting
 
-### Laoyout
+### Layout
 
-When the renderer is created and added to the tree, it does not have a position and size. Calculating these values is called laoyout or reflow.
+When the renderer is created and added to the tree, it does not have a position and size. Calculating these values is called layout or reflow.
 
 As HTML has a flow based layout model, meaning that most of the time it is possible to compute the geometry in a single pass. Layout is a recursive process. It begins from `<html>` element and travels all hierarchies and computes geometric information for each renderer that requires it. Root renderer's position is 0,0 and its dimensions are the viewport.
 We don't want to calculate full layout for even a small change. To handle this, browser use "dirty bit" system. A renderer that is changes or added marks itself and its children as "dirty" needing layout calculation.
