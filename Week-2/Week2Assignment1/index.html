@@ -3,17 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Best Laptops to buy 😄</title>
+    <title>Laptop Geeks ❤️</title>
     <meta
       name="description"
       content="One Stop Solution for all Laptop related queries"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="heading">
-      <h1>Laptop Geeks</h1>
+      <h1>Laptop Geeks ❤️</h1>
       <p>One Stop Solution for all Laptop related queries</p>
     </header>
     <main>
@@ -31,7 +37,7 @@
           </p>
           <img
             class="laptopImage"
-            src="macbook-pro-14-and-16_overview__fz0lron5xyuu_og.png"
+            src="macbook-pro-14-and-16_overview__fz0lron5xyuu_og-removebg-preview.png"
             alt="laptopImage"
           />
         </div>
@@ -165,6 +171,36 @@
           </p>
           <a href="#">Read More...</a>
         </div>
+      </section>
+
+      <section class="formSection">
+        <form>
+          <h2>Ask a question</h2>
+          <p>Please fill this form to get your queries answered</p>
+          <hr />
+          <div class="inputs">
+            <label for="firstName">First Name</label>
+            <input type="text" placeholder="Enter your first name" name="firstName" required id="firstName" />
+            <label for="lastName">Last Name</label>
+            <input type="text" placeholder="Enter your last name" name="lastName" required id="lastName" />
+            <label for="email">Email</label>
+            <input type="email" placeholder="Enter your email address" name="email" required id="email" />
+            <label for="phone">Phone Number</label>
+            <input type="number" placeholder="Enter your phone number" name="phone" required id="phone" />
+            <fieldset>
+              <legend>Address:</legend>
+              <label for="street">Street/House no./ Flat no.</label>
+              <input type="text" name="street" placeholder="Enter your street/house no." id="street" required /> <br />
+              <label for="city">City:</label>
+              <input type="text" class="cityInput" name="city" placeholder="Enter your city name" id="city" required />
+            </fieldset>
+            <p class="terms">
+              By clicking Submit, you agree to our
+              <a href="">Terms & Conditions</a>
+            </p>
+          </div>
+          <button class="submitBtn" type="submit">Submit</button>
+        </form>
       </section>
     </main>
     <footer></footer>
