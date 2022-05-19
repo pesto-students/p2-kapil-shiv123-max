@@ -86,7 +86,7 @@ body {
 }
 
 .formSection {
-    margin-left: 60px;
+  margin-left: 60px;
   width: 100%;
 }
 
@@ -156,18 +156,18 @@ fieldset > input::placeholder {
 
 .terms {
   margin-top: 10px;
-} 
-a{
+}
+a {
   color: #c2bebe;
   font-size: 1.1rem;
 }
 
 a:hover {
-    color: #e8e3e3;
+  color: #e8e3e3;
 }
 
-.cityInput{
-    margin-bottom: 10px;
+.cityInput {
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 1268px) {
@@ -183,7 +183,7 @@ a:hover {
   }
 
   .formSection {
-      margin-left: 50px;
+    margin-left: 50px;
   }
 }
 
@@ -213,9 +213,9 @@ a:hover {
   }
 
   .formSection {
-      margin: 5px;
-      width: 100%;
-      margin-left: 15px;
+    margin: 5px;
+    width: 100%;
+    margin-left: 15px;
   }
 
   form {
