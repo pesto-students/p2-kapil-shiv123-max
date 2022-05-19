@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 95vw;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.heading > h1 {
+  margin-bottom: 10px;
+}
+
+.heading > p {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.section {
+  display: flex;
+  /* flex-wrap: wrap; */
+  width: 100%;
+  margin: 30px;
+}
+
+.leftSection {
+  width: 50%;
+  margin: 10px;
+}
+
+.leftSection > h2 {
+  margin-bottom: 10px;
+}
+
+.rightSection {
+  width: 50%;
+  margin: 10px;
+}
+
+.article {
+  margin-bottom: 30px;
+}
+
+.article > h2 {
+  margin-bottom: 10px;
+}
+
+.article > p {
+  margin-bottom: 10px;
+}
+
+.laptopImage {
+  width: 100%;
+  /* height: 90%; */
+}
+
+.gridSection {
+  display: flex;
+  flex-wrap: wrap;
+  /* max-width: 90vw; */
+  margin: 30px;
+}
+
+.gridArticle {
+  margin: 35px;
+  margin-left: 30px;
+  width: 25vw;
+}
+
+.gridArticle > h2 {
+  margin-bottom: 15px;
+}
+
+.gridArticle > p {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 1268px) {
+  .gridSection {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .gridArticle {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .heading > p {
+    margin-left: 30px;
+    font-size: 1rem;
+  }
+  .section {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .leftSection {
+    width: 100%;
+    margin: 5px;
+  }
+  .rightSection {
+    width: 100%;
+    margin: 5px;
+  }
+
+  .gridSection {
+    margin: 5px;
+    width: 100%;
+  }
+
+  .gridArticle {
+    width: 100%;
+    margin: 5px;
+  }
+}
