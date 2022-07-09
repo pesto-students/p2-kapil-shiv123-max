@@ -25,20 +25,37 @@ const TodoForm = (props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="todoForm">
-        <input
-          placeholder="Add a todo"
-          value={input}
-          type="text"
-          name="text"
-          onChange={handleChange}
-          className="todoInput"
-          ref={inputRef}
-        />
-        <button className="todoButton">Add todo</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="todoForm">
+      {props.edit ? (
+        <>
+          <input
+            placeholder="Update your item"
+            value={input}
+            onChange={handleChange}
+            name="text"
+            ref={inputRef}
+            className="todoInput edit"
+          />
+          <button onClick={handleSubmit} className="todoButton edit">
+            Update
+          </button>
+        </>
+      ) : (
+        <>
+          <input
+            placeholder="Add a todo"
+            value={input}
+            onChange={handleChange}
+            name="text"
+            className="todoInput"
+            ref={inputRef}
+          />
+          <button onClick={handleSubmit} className="todoButton">
+            Add todo
+          </button>
+        </>
+      )}
+    </form>
   );
 };
 
