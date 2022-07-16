@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  background-color: #222222;
+  color: white;
+}
+
+body {
+  width: 95vw;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.heading > h1 {
+  margin-bottom: 10px;
+}
+
+.heading > p {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.section {
+  display: flex;
+  /* flex-wrap: wrap; */
+  width: 100%;
+  margin: 35px;
+}
+
+.leftSection {
+  width: 50%;
+  margin: 10px;
+  margin-left: 20px;
+}
+
+.leftSection > h2 {
+  margin-bottom: 10px;
+}
+
+.rightSection {
+  width: 50%;
+  margin: 10px;
+}
+
+.article {
+  margin-bottom: 30px;
+}
+
+.article > h2 {
+  margin-bottom: 10px;
+}
+
+.article > p {
+  margin-bottom: 10px;
+}
+
+.laptopImage {
+  width: 100%;
+}
+
+.gridSection {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px;
+}
+
+.gridArticle {
+  margin: 35px;
+  margin-left: 30px;
+  width: 25vw;
+}
+
+.gridArticle > h2 {
+  margin-bottom: 15px;
+}
+
+.gridArticle > p {
+  margin-bottom: 10px;
+}
+
+.formSection {
+  margin-left: 60px;
+  width: 100%;
+}
+
+form {
+  width: 90%;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset > label,
+fieldset > input {
+  margin: 5px 10px;
+}
+
+fieldset > input {
+  height: 30px;
+  background-color: #2d2d2d;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.inputs > input {
+  height: 30px;
+  margin: 10px 0;
+  background-color: #2d2d2d;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.inputs > input::placeholder,
+fieldset > input::placeholder {
+  color: rgb(160, 158, 158);
+}
+
+.inputs > label {
+  margin-top: 10px;
+}
+
+.submitBtn {
+  padding: 10px 50px;
+  margin-top: 20px;
+  background-color: #2d2d2d;
+  color: rgb(160, 158, 158);
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.submitBtn:hover {
+  background-color: #4d4c4c;
+  color: rgb(211, 209, 209);
+}
+
+.terms {
+  margin-top: 10px;
+}
+a {
+  color: #c2bebe;
+  font-size: 1.1rem;
+}
+
+a:hover {
+  color: #e8e3e3;
+}
+
+.cityInput {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 1268px) {
+  .gridSection {
+    margin-left: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .gridArticle {
+    width: 47%;
+    margin: 10px;
+  }
+
+  .formSection {
+    margin-left: 50px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .heading > p {
+    margin-left: 30px;
+    font-size: 1rem;
+  }
+  .section {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .leftSection {
+    width: 100%;
+    margin: 5px;
+  }
+  .rightSection {
+    width: 100%;
+    margin: 5px;
+  }
+
+  .gridSection {
+    margin: 5px;
+    width: 100%;
+  }
+
+  .formSection {
+    margin: 5px;
+    width: 100%;
+    margin-left: 15px;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .gridArticle {
+    width: 100%;
+    margin: 10px;
+    margin-bottom: 20px;
+  }
+}
