@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./style.css";
 
 const Home = () => {
   const [link, setLink] = useState("");
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(
+    localStorage.getItem("list") ? JSON.parse(localStorage.getItem("list")) : []
+  );
   const [result, setResult] = useState("");
-
+  const [copyText, setCopyText] = useState("Copy To Clipboard");
   const handleChange = (e) => {
     setLink(e.target.value);
   };
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,19 +24,37 @@ const Home = () => {
         return res.json();
       })
       .then((data) => {
+        let newList;
         setResult(data.result.full_short_link);
-        setList((prevList) => [
-          ...prevList,
-          {
-            longURL: link,
-            shortURL: data.result.full_short_link,
-          },
-        ]);
+        setList((prevList) => {
+          newList = [
+            ...prevList,
+            {
+              longURL: link,
+              shortURL: data.result.full_short_link,
+            },
+          ];
+          return newList;
+        });
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  const spliceLongURL = (longURL) => {
+    return longURL.slice(0, 50) + "...";
+  };
+
+  function copyTextToClipboard(text) {
+    if ("clipboard" in navigator) {
+      // setCopyText("Copied to Clipboard");
+      navigator.clipboard.writeText(text);
+    } else {
+      document.execCommand("copy", true, text);
+    }
+    setCopyText("Copied to Clipboard");
+  }
 
   return (
     <div className="homeContainer">
@@ -53,18 +78,22 @@ const Home = () => {
           {result ? (
             <div className="result">
               <div>{result}</div>
-              <button>Copy To Clipboard</button>
+              <button onClick={() => copyTextToClipboard(result)}>
+                {copyText}
+              </button>
             </div>
           ) : null}
         </div>
 
         <div className="listBox">
-          {list.length === 0 ? null : <h3>Recent URLs</h3>}
-          {list.map((item, index) => {
+          {/* {JSON.parse(localStorage.getItem("list")).length === 0 ? null : (
+            <h3>Recent URLs</h3>
+          )} */}
+          {list?.map((item, index) => {
             return (
               <div className="listItem" key={index}>
                 <p>
-                  {index + 1}. {item.longURL}
+                  {index + 1}. {spliceLongURL(item.longURL)}
                 </p>
                 <p>{item.shortURL}</p>
               </div>
