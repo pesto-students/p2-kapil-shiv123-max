@@ -4,7 +4,7 @@ import "./style.css";
 
 const Header = () => {
   let activeStyle = {
-    color: "cyan",
+    color: "#2c88aa",
     textDecoration: "underline",
   };
   return (

@@ -1,7 +1,12 @@
 import React from "react";
+import "./style.css"
 
 const Footer = () => {
-  return <h1>This is the footer</h1>;
+  return (
+    <div className="footerContainer">
+      <p>Made with 🤍 in India</p>
+    </div>
+  );
 };
 
 export default Footer;
