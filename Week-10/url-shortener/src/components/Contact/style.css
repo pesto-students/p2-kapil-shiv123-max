@@ -1,3 +1,7 @@
 .contactContainer {
-  min-height: 80vh;
+  min-height: 73.5vh;
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  flex-direction: column;
 }

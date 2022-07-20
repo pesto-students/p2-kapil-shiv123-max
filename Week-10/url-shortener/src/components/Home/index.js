@@ -29,7 +29,7 @@ const Home = () => {
     return !!pattern.test(str);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validURL(link) || link.length === 0) {
       toast.error("Invalid URL!", {
@@ -44,7 +44,7 @@ const Home = () => {
       return;
     }
     // shorten logic
-    fetch(`https://api.shrtco.de/v2/shorten?url=${link}`)
+    await fetch(`https://api.shrtco.de/v2/shorten?url=${link}`)
       .then((res) => {
         return res.json();
       })
