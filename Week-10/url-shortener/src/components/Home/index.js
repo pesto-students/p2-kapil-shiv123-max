@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./style.css";
 import { ToastContainer, toast } from "react-toastify";
+import { validURL } from "../../util";
+import "./style.css";
+import ListItem from "../ListItem";
+import ShortenerForm from "../ShortenerForm";
 
 const Home = () => {
   const [link, setLink] = useState("");
@@ -8,6 +11,7 @@ const Home = () => {
     localStorage.getItem("list") ? JSON.parse(localStorage.getItem("list")) : []
   );
   const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     setLink(e.target.value);
   };
@@ -15,19 +19,6 @@ const Home = () => {
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(list));
   }, [list]);
-
-  function validURL(str) {
-    var pattern = new RegExp(
-      "^(https?:\\/\\/)?" + // protocol
-        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-        "(\\#[-a-z\\d_]*)?$",
-      "i"
-    ); // fragment locator
-    return !!pattern.test(str);
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,6 +34,7 @@ const Home = () => {
       });
       return;
     }
+    setLoading(true);
     // shorten logic
     await fetch(`https://api.shrtco.de/v2/shorten?url=${link}`)
       .then((res) => {
@@ -62,32 +54,14 @@ const Home = () => {
           return newList;
         });
       })
+      .then(() => {
+        setLoading(false);
+      })
       .catch((err) => {
         console.log(err);
       });
     setLink("");
   };
-
-  const spliceLongURL = (longURL) => {
-    return longURL.slice(0, 40) + "...";
-  };
-
-  function copyTextToClipboard(text) {
-    if ("clipboard" in navigator) {
-      navigator.clipboard.writeText(text);
-    } else {
-      document.execCommand("copy", true, text);
-    }
-    toast.success("Link Copied!", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  }
 
   const deleteItem = (shortURL) => {
     const updatedList = JSON.parse(localStorage.getItem("list")).filter(
@@ -112,6 +86,7 @@ const Home = () => {
         toastClassName="dark-toast"
         theme="dark"
       />
+
       <div className="intro">
         <h1>URL Shortener</h1>
         <p>
@@ -119,56 +94,19 @@ const Home = () => {
           seconds.
         </p>
       </div>
-      <div className="shortenerBox">
-        <form className="shortenForm" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={link}
-            onChange={handleChange}
-            placeholder="Paste a link here..."
-            className="linkInput"
-          />
-          <button className="shortenButton" onClick={(e) => handleSubmit(e)}>
-            Shorten URL
-          </button>
-        </form>
-        {result ? (
-          <div className="resultWrapper">
-            <div className="resultText">{result}</div>
-            <button
-              className="shortenButton"
-              onClick={() => copyTextToClipboard(result)}
-            >
-              Copy to Clipboard
-            </button>
-          </div>
-        ) : null}
-      </div>
+      <ShortenerForm
+        link={link}
+        result={result}
+        loading={loading}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
       <div className="listBox">
         {list.length === 0 ? null : <h2>Recent URLs</h2>}
         {list?.map((item, index) => {
           return (
             <div className="listItemContainer">
-              <div className="listItem" key={index}>
-                <p className="longURL">{spliceLongURL(item.longURL)}</p>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  href={item.shortURL}
-                  className="shortURL"
-                >
-                  {item.shortURL}
-                </a>
-                <button
-                  onClick={() => {
-                    copyTextToClipboard(item.shortURL);
-                  }}
-                  className="listButton"
-                >
-                  Copy
-                </button>
-              </div>
-              <span onClick={() => deleteItem(item.shortURL)}>X</span>
+              <ListItem deleteItem={deleteItem} item={item} index={index} />
             </div>
           );
         })}

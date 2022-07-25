@@ -131,3 +131,8 @@
 .listButton:hover {
   background-color: #e3f2ff;
 }
+
+.spinner {
+  text-align: center;
+  margin-top: 40px;
+}
