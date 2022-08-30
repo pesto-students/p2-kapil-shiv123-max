@@ -7,17 +7,18 @@ const assetsSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    mf: {
-      type: Number,
+    type: {
+      type: String,
+      enum: ["Gold", "Crypto", "Bond"],
     },
-    gold: {
-      type: Number,
-    },
-    crypto: {
-      type: Number,
-    },
-    silver: {
-      type: Number,
+    value: {
+      purchasedValue: {
+        type: Number,
+        required: true,
+      },
+      currentValue: {
+        type: Number,
+      },
     },
   },
   {
