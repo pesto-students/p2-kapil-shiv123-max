@@ -2,12 +2,12 @@ const Equity = require("../models/equity");
 
 const createEquity = (req, res) => {
   const userId = req.user._id;
-  const { company,units,cost } = req.body;
+  const { company, units, cost } = req.body;
   const equity = new Equity({
     user: userId,
     company,
     units,
-    cost
+    cost,
   });
   equity.save((err, newEquity) => {
     if (err) {
@@ -33,11 +33,9 @@ const getEquity = (req, res) => {
       });
     }
 
-    if (equity) {
-      return res.status(200).json({
-        equity,
-      });
-    }
+    res.status(200).json({
+      equity,
+    });
   });
 };
 

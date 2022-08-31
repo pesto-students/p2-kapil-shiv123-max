@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const userRoutes = require("./routes/auth");
 const assetRoutes = require("./routes/assets");
 const equityRoutes = require("./routes/equity");
+const transactionRoutes = require("./routes/transaction");
 
 dotenv.config();
 const app = express();
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
 app.use("/api/user", userRoutes);
 app.use("/api", assetRoutes);
 app.use("/api", equityRoutes);
+app.use("/api/",transactionRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on: ${port}`);

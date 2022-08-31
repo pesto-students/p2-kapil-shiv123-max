@@ -32,11 +32,9 @@ const getAssets = (req, res) => {
       });
     }
 
-    if (asset) {
-      return res.status(200).json({
-        asset: asset,
-      });
-    }
+    res.status(200).json({
+      asset: asset,
+    });
   });
 };
 
