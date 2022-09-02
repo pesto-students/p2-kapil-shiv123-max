@@ -7,6 +7,7 @@ const userRoutes = require("./routes/auth");
 const assetRoutes = require("./routes/assets");
 const equityRoutes = require("./routes/equity");
 const transactionRoutes = require("./routes/transaction");
+const fixedIncomeRoutes = require("./routes/income");
 
 dotenv.config();
 const app = express();
@@ -24,14 +25,15 @@ connection.once("open", () => {
 
 app.get("/", (req, res) => {
   res.status(200).json({
-    message: "Welcome to the portfolio API.😄",
+    message: "Welcome to the wealth portfolio API.😄",
   });
 });
 
 app.use("/api/user", userRoutes);
 app.use("/api", assetRoutes);
 app.use("/api", equityRoutes);
-app.use("/api/",transactionRoutes);
+app.use("/api/", transactionRoutes);
+app.use("/api/", fixedIncomeRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on: ${port}`);
