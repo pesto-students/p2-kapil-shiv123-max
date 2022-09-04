@@ -4,6 +4,7 @@ class parkingLot {
   constructor(size) {
     this.size = size;
     this.slots = new Array(size).fill(null);
+    console.log(`Created a parking lot with ${size} slots`);
   }
 
   getNextFreeSlot() {
@@ -26,6 +27,7 @@ class parkingLot {
   leave(slot) {
     if (!this.slots[slot - 1]) {
       console.log("Slot is already empty.");
+      return;
     }
     this.slots[slot - 1] = null;
     console.log(`Slot number ${slot} is free.`);
@@ -35,11 +37,16 @@ class parkingLot {
     let status = [];
 
     for (let i = 0; i < this.size; ++i) {
-      if (this.slots[i]) status.push({
-        slot: i+1,
-        registration_number: this.slots[i].registration_number,
-        color: this.slots[i].color
-      });
+      if (this.slots[i])
+        status.push({
+          slot: i + 1,
+          registration_number: this.slots[i].registration_number,
+          color: this.slots[i].color,
+        });
+    }
+    if (status.length === 0) {
+      console.log("Empty parking lot.");
+      return;
     }
     console.table(status);
   }
@@ -47,7 +54,7 @@ class parkingLot {
   filterByColor(color) {
     let matches = this.slots
       .filter((element) => element?.color === color)
-      .map((element) => element.registration_number);
+      .map((element) => element?.registration_number);
     matches.length === 0
       ? console.log("Not Found")
       : console.log(matches.join(", "));
