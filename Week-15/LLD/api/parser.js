@@ -104,13 +104,14 @@ class parser {
           this.parkingLotInstance.filterSlots("registration number", args[0]);
         }
         break;
-      case "exit": {
-        exit = true;
-        break;
-      }
+    //   case "exit": {
+    //     return false;
+    //     break;
+    //   }
       default: {
         console.log(`Invalid command ${command}`);
       }
+      return true;
     }
   }
 }

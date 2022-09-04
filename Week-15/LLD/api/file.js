@@ -28,4 +28,4 @@ const parseFile = (filePath) => {
   })();
 };
 
-parseFile("../file.txt");
+export default parseFile;
