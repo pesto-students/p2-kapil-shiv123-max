@@ -1,6 +1,16 @@
 import React from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { copyTextToClipboard } from "../../util";
+import ReactGA from "react-ga";
+
+const eventTrack = (category, action, label) => {
+  console.log("Event tracked");
+  ReactGA.event({
+    category: category,
+    action: action,
+    label: label,
+  });
+};
 
 const ShortenerForm = ({
   link,
@@ -19,7 +29,13 @@ const ShortenerForm = ({
           placeholder="Paste a link here..."
           className="linkInput"
         />
-        <button className="shortenButton" onClick={(e) => handleSubmit(e)}>
+        <button
+          className="shortenButton"
+          onClick={(e) => {
+            handleSubmit(e);
+            eventTrack("Button", "Button Clicked", "Button");
+          }}
+        >
           Shorten URL
         </button>
       </form>
