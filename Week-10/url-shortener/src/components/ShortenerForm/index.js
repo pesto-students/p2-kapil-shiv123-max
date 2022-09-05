@@ -56,9 +56,6 @@ const ShortenerForm = ({
             >
               Copy to Clipboard
             </button>
-            <button onClick={eventTrack.bind(this, "test", "test", "test")}>
-              Test Button
-            </button>
           </div>
         </>
       ) : null}
