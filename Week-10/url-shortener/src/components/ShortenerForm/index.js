@@ -33,7 +33,7 @@ const ShortenerForm = ({
           className="shortenButton"
           onClick={(e) => {
             handleSubmit(e);
-            eventTrack("Button", "Button Clicked", "Button");
+            eventTrack.bind(this, "Button", "Button Clicked", "Button");
           }}
         >
           Shorten URL
