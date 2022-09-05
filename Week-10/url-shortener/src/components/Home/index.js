@@ -4,6 +4,7 @@ import { validURL } from "../../util";
 import "./style.css";
 import ListItem from "../ListItem";
 import ShortenerForm from "../ShortenerForm";
+import ReactGA from "react-ga";
 
 const Home = () => {
   const [link, setLink] = useState("");
@@ -61,6 +62,10 @@ const Home = () => {
         console.log(err);
       });
     setLink("");
+    ReactGA.event({
+      category: "Button",
+      action: "Link Shortened",
+    });
   };
 
   const deleteItem = (shortURL) => {
