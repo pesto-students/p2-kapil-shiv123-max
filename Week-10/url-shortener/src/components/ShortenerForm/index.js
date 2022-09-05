@@ -2,6 +2,8 @@ import React from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { copyTextToClipboard } from "../../util";
 import ReactGA from "react-ga";
+const TRACKING_ID = "UA-185498813-1";
+ReactGA.initialize(TRACKING_ID);
 
 const eventTrack = (category, action, label) => {
   console.log("Event tracked");
@@ -30,10 +32,11 @@ const ShortenerForm = ({
           className="linkInput"
         />
         <button
+          type="submit"
           className="shortenButton"
           onClick={(e) => {
             handleSubmit(e);
-            eventTrack.bind(this, "Button", "Button Clicked", "Button");
+            eventTrack("Button", "Button Clicked", "Button");
           }}
         >
           Shorten URL
