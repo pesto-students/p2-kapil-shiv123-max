@@ -1,0 +1,49 @@
+import React from "react";
+import ScaleLoader from "react-spinners/ScaleLoader";
+import { copyTextToClipboard } from "../../util";
+
+const ShortenerForm = ({
+  link,
+  loading,
+  result,
+  handleChange,
+  handleSubmit,
+}) => {
+  return (
+    <div className="shortenerBox">
+      <form className="shortenForm" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={link}
+          onChange={handleChange}
+          placeholder="Paste a link here..."
+          className="linkInput"
+        />
+        <button className="shortenButton" onClick={(e) => handleSubmit(e)}>
+          Shorten URL
+        </button>
+      </form>
+      <ScaleLoader
+        className="spinner"
+        color="white"
+        loading={loading}
+        size={60}
+      />
+      {result ? (
+        <>
+          <div className="resultWrapper">
+            <div className="resultText">{result}</div>
+            <button
+              className="shortenButton"
+              onClick={() => copyTextToClipboard(result)}
+            >
+              Copy to Clipboard
+            </button>
+          </div>
+        </>
+      ) : null}
+    </div>
+  );
+};
+
+export default ShortenerForm;
