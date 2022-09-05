@@ -57,15 +57,15 @@ const Home = () => {
       })
       .then(() => {
         setLoading(false);
+        ReactGA.event({
+          category: "Button",
+          action: "Link Shortened",
+        });
       })
       .catch((err) => {
         console.log(err);
       });
     setLink("");
-    ReactGA.event({
-      category: "Button",
-      action: "Link Shortened",
-    });
   };
 
   const deleteItem = (shortURL) => {
