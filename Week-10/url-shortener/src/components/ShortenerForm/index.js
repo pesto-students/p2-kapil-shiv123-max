@@ -2,8 +2,6 @@ import React from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { copyTextToClipboard } from "../../util";
 import ReactGA from "react-ga";
-const TRACKING_ID = "UA-185498813-1";
-ReactGA.initialize(TRACKING_ID);
 
 const eventTrack = (category, action, label) => {
   console.log("Event tracked");
@@ -57,6 +55,9 @@ const ShortenerForm = ({
               onClick={() => copyTextToClipboard(result)}
             >
               Copy to Clipboard
+            </button>
+            <button onClick={eventTrack.bind(this, "test", "test", "test")}>
+              Test Button
             </button>
           </div>
         </>
